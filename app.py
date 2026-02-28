@@ -83,7 +83,7 @@ def navigation_buttons(back_step=None, forward_fn=None, forward_label="Continue 
 @st.cache_data(show_spinner="Loading EAA Spatial Data...")
 def load_shapefile():
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(base_dir, "EAA Shapefile", "New folder", "Export_Output.shp")
+    file_path = os.path.join(base_dir, "New folder", "Export_Output.shp")
 
     if not os.path.exists(file_path):
         st.error(f"❌ Could not find shapefile at `{file_path}`.")
@@ -336,3 +336,4 @@ with col2:
         st.info(f"💡 **Understanding Results:** 1 Credit = 1 ton stored CO₂.\n\n🚗 **Impact:** For every **1 hectare**, you offset **{cars:.1f} cars** per year. Total: **{adj_credits:,.0f} tradable Carbon Credits**!")
         
         if st.button("🔄 Start New Assessment", type="primary"): reset_survey(); st.rerun()
+
