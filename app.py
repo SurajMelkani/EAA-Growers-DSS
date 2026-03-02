@@ -200,6 +200,7 @@ st.divider()
 col1, col2 = st.columns([1.2, 1], gap="large")
 
 # --- LEFT COLUMN: MAP ---
+# --- LEFT COLUMN: MAP ---
 with col1:
     st.markdown('<div class="step-header">📍 Farm Location & Boundary</div>', unsafe_allow_html=True)
     st.caption("**Instructions:** Click the map to select a point, or use the shape tool (polygon icon) to draw your farm's boundary. Use the search bar to find a specific address.")
@@ -214,10 +215,29 @@ with col1:
         "polyline": False, "circle": False, "circlemarker": False,
     }).add_to(m)
 
-    # FIXED: "weight" now has correct quotes to prevent NameError
     folium.GeoJson(eaa_gdf, name="EAA Boundary", style_function=lambda x: {
         "fillColor": "#2c7fb8", "color": "#253494", "weight": 2, "fillOpacity": 0.15,
     }).add_to(m)
+
+    # =========================================================
+    # NEW CODE: ADD VISUAL MARKERS FOR THE SELECTED LOCATION
+    # =========================================================
+    if st.session_state.clicked_lat is not None and st.session_state.clicked_lon is not None:
+        if st.session_state.selection_mode == "point":
+            # Add a red pin for a standard map click
+            folium.Marker(
+                location=[st.session_state.clicked_lat, st.session_state.clicked_lon],
+                icon=folium.Icon(color="red", icon="map-marker"),
+                tooltip="Selected Location"
+            ).add_to(m)
+        elif st.session_state.selection_mode == "polygon":
+            # Add a blue info pin at the center of a drawn polygon
+            folium.Marker(
+                location=[st.session_state.clicked_lat, st.session_state.clicked_lon],
+                icon=folium.Icon(color="blue", icon="info-sign"),
+                tooltip="Calculated Field Centroid"
+            ).add_to(m)
+    # =========================================================
 
     map_data = st_folium(m, width=600, height=500, key=f"map_{st.session_state.map_key}")
     
@@ -361,5 +381,6 @@ with col2:
         st.info(f"💡 **Understanding Results:** 1 Credit = 1 ton stored CO₂.\n\n🚗 **Impact:** For every **1 hectare**, you offset **{cars:.1f} cars** per year. Total: **{adj_credits:,.0f} tradable Carbon Credits**!")
         
         if st.button("🔄 Start New Assessment", type="primary"): reset_survey(); st.rerun()
+
 
 
