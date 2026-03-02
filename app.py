@@ -206,7 +206,10 @@ with col1:
     st.caption("**Instructions:** Click the map to select a point, or use the shape tool (polygon icon) to draw your farm's boundary. Use the search bar to find a specific address.")
 
     m = folium.Map(location=map_center, zoom_start=10, tiles="CartoDB positron")
-    m.fit_bounds([[map_bounds[1], map_bounds[0]], [map_bounds[3], map_bounds[2]]])
+    
+    # ONLY force the map to zoom out if the user hasn't clicked or drawn anything yet
+    if st.session_state.clicked_lat is None and st.session_state.drawn_area_ha is None:
+        m.fit_bounds([[map_bounds[1], map_bounds[0]], [map_bounds[3], map_bounds[2]]])
 
     Geocoder(collapsed=False, position='topright', add_marker=True).add_to(m)
 
@@ -381,6 +384,7 @@ with col2:
         st.info(f"💡 **Understanding Results:** 1 Credit = 1 ton stored CO₂.\n\n🚗 **Impact:** For every **1 hectare**, you offset **{cars:.1f} cars** per year. Total: **{adj_credits:,.0f} tradable Carbon Credits**!")
         
         if st.button("🔄 Start New Assessment", type="primary"): reset_survey(); st.rerun()
+
 
 
 
