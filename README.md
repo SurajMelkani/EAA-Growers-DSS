@@ -2,7 +2,7 @@
 Interactive decision-support system that predicts soil organic matter, subsidence risk, and management guidance based on spatial selection within the EAA.
 
 Launch Live Decision Support System
-https://eaa-growers-dss.streamlit.app/
+[https://eaa-growers-dss.streamlit.app/](https://dss-eaa-growers.streamlit.app/)
 
 
 This Everglades Growers Decision Support System (DSS) is a specialized research tool developed as part of your PhD candidacy at the University of Florida within the Department of Soil, Water, and Ecosystem Sciences.
