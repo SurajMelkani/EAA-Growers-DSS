@@ -13,7 +13,7 @@ This Decision Support System (DSS) is a specialized research tool developed as p
 > The core predictive machine learning models driving this architecture were trained on a rigorous library of 700+ EAA Histosol samples. Because this research is currently pending academic publication, the live prediction engine has been temporarily replaced with a representative baseline model. The fully calibrated `.joblib` model and `.csv` datasets will be integrated upon publication.
 
 ---
-## Model & Data Availability
+### Model & Data Availability
 
 The core predictive machine learning models used in this architecture were trained on a curated library of more than 700 Histosol samples from the Everglades Agricultural Area.
 
