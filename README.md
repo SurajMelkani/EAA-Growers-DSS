@@ -18,8 +18,8 @@ This Decision Support System (DSS) is a specialized research tool developed as p
 The platform integrates several advanced components into a single interactive interface:
 
 * **Spatial Predictive Modeling:** Utilizes a coordinate-based model architecture to estimate Soil Organic Matter dynamics and Soil Depth across the diverse landscape of the EAA.
-* **Carbon Dynamics Logic:** The backend contains mathematical models designed to calculate carbon sequestration potential and CO₂ emission offsets based on specific crop selections, soil depths, and historical profiles.
-* **Management Protocol Engine:** Provides guidance driven by a diagnostic logic that interprets soil health indicators (such as pH and SOM levels) to suggest targeted Best Management Practices (BMPs).
+* **Carbon Dynamics Logic:** The backend contains mathematical models designed to calculate carbon sequestration potential and CO₂ emission offsets based on specific crop selections and soil depths.
+* **Management Protocol Engine:** Provides guidance driven by a diagnostic logic that interprets soil health indicators (such as pH and SOM levels) and soil depth to suggest targeted Best Management Practices.
 * **Precision Geography:** Leverages `GeoPandas` and `Folium` for high-fidelity spatial selection, enabling growers to draw specific field boundaries for localized, aggregated analysis.
 
 ---
